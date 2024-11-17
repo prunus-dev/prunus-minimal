@@ -1,0 +1,1093 @@
+/*****************************************************************************************\
+  _____                              _    _                      _                       
+ |  __ \                            | |  | |                    | |                      
+ | |__) | __ _   _ _ __  _   _ ___  | |__| | ___  _ __ ___   ___| |__  _ __ _____      __
+ |  ___/ '__| | | | '_ \| | | / __| |  __  |/ _ \| '_ ` _ \ / _ \ '_ \| '__/ _ \ \ /\ / /
+ | |   | |  | |_| | | | | |_| \__ \ | |  | | (_) | | | | | |  __/ |_) | | |  __/\ V  V / 
+ |_|   |_|   \__,_|_| |_|\__,_|___/ |_|  |_|\___/|_| |_| |_|\___|_.__/|_|  \___| \_/\_/  
+ 
+\*****************************************************************************************/
+
+/***** VARIABLES *****/
+:root {
+  /* General font used for most text on the page */
+  --general-font: "Overpass";
+  
+  /* Font used for information blocks, such as the {{focused}} or {{aside}} styles */
+	--info-font: "Overpass";
+  
+  /* Font used for names of things, such as in the {{highlighted}} style */
+	--name-font: "Overpass";
+  
+  /* Font used for text in quotes, such as the {{simplequote}} style */
+  --quote-font: "BookInsanityRemake";
+  
+  /* Font used for the footer text in the {{pagenumber-footer}} style */
+  --footer-font: "ScalySansSmallCapsRemake";
+  
+  /* Font used for code text, such as `code` or ```code block``` */
+  --code-font: "monospace";
+  
+  /* The symbol to use to represent a spell of rank 0 (cantrip) */
+  --spell-cantrip-symbol: "⭕";
+  
+  /* The symbol used to represent a level for a spell of rank 1+ */
+  --spell-leveled-symbol: "⚫";
+  
+  /* The color to make the symbols used for spell ranks */
+  --spell-rank-color: black;
+  
+  /* The color to use for highlighted text */
+  --text-highlight-color: midnightblue;
+  
+  /* The background color for the page */
+  --page-background-color: #FBFCF9;
+  
+  /* The color for the artist name text for an image */
+  --artist-attribution-color: #000033;
+  
+  /* The color to use for larger headers (# H1, ## H2) */
+  --big-header-color: #000022;
+  
+  /* The color to use for smaller headers (### H3, #### H4) */
+  --small-header-color: #1C2D36;
+  
+  /* The color to use for the background of code text, such as `code` or ```code block``` */
+  --code-background-color: #C9DAE4;
+  
+  /*
+    The color to use for horizontal lines, such as the {{horizontal-rule}} style, or the line
+    under an ### H3
+  */
+  --horizontal-line-color: #37596C;
+  
+  /* Theme color; used for {{note}} blocks and table rows (the "stripe" color) */
+  --theme-color-1: #BCD1DD;
+  
+  /* Theme color; used for {{aside}} and {{focused}} blocks */
+  --theme-color-2: #E4EDF1;
+  
+  /* Theme color; not currently used, but available for use */
+  --theme-color-3: #F5F8FA;
+}
+/***** END VARIABLES *****/
+
+.page ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.centered {
+  text-align: center;
+}
+
+.left-text {
+  text-align: left;
+}
+
+.right-text {
+  text-align: right;
+}
+
+.fullwidth {
+  width: 100%;
+}
+
+.centerfull {
+  text-align: center;
+  width: 100%;
+}
+
+.leftfull {
+  text-align: left;
+  width: 100%;
+}
+
+.rightfull {
+  text-align: right;
+  width: 100%;
+}
+
+.underlined {
+  text-decoration: underline !important;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.italics {
+  font-style: italic !important;
+}
+
+.oblique {
+  font-style: oblique !important;
+}
+
+.normal {
+  font-style: normal !important;
+  font-weight: normal !important;
+  text-decoration: none !important;
+}
+
+.f-mono {
+  font-family: monospace !important;
+}
+
+.f-opensans {
+  font-family: "OpenSans" !important;
+}
+
+.f-codebold {
+  font-family: "CodeBold" !important;
+}
+
+.f-codelight {
+  font-family: "CodeLight" !important
+}
+
+.f-scalysans {
+  font-family: "ScalySansRemake" !important;
+}
+
+.f-bookinsanity {
+  font-family: "BookInsanityRemake" !important;
+}
+
+.f-mreaves {
+  font-family: "MrEavesRemake" !important;
+}
+
+.f-pagella {
+  font-family: "Pagella" !important;
+}
+
+.f-solbera {
+  font-family: "SolberaImitationRemake" !important;
+}
+
+.f-scalysanssmall {
+  font-family: "ScalySansSmallCapsRemake" !important;
+}
+
+.f-walterturncoat {
+  font-family: "WalterTurncoat" !important;
+}
+
+.f-lato {
+  font-family: "Lato" !important;
+}
+
+.f-courier {
+  font-family: "Courier" !important;
+}
+
+.f-nodesta {
+  font-family: "NodestoCapsCondensed" !important;
+}
+
+.f-overpass {
+  font-family: "Overpass" !important;
+}
+
+.f-davek {
+  font-family: "Davek" !important;
+}
+
+.f-iokharic {
+  font-family: "Iokharic" !important;
+}
+
+.f-rellanic {
+  font-family: "Rellanic" !important;
+}
+
+.f-timesnewroman {
+  font-family: "Times New Roman" !important;
+}
+
+
+/***** GENERAL FORMATTING *****/
+.horizontal-rule {
+	width: 100%;
+	height: 12px;
+	/* border-top: 2px solid var(--HB_Color_HeaderUnderline); */
+  border-top: 3px solid var(--horizontal-line-color);
+}
+
+/* Removes Drop Caps */
+.page h1+p:first-letter {
+	all: unset;
+}
+
+
+/* Removes Small-Caps in first line */
+.page h1+p:first-line {
+	all: unset;
+}
+
+.columnWrapper:has(.widepage) {
+	columns: 1;
+}
+
+.page:has(.background-white) { background: white; }
+
+.page:has(.monochrome-page), .monochrome {
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.page:has(.monochrome-page) li::marker, .monochrome li::marker {
+  color: black;
+}
+
+.page {
+  background: var(--page-background-color);
+}
+
+.page table tbody tr:nth-child(odd) {
+  background: var(--theme-color-1);
+}
+
+.page .block.note, .page .inline-block.note {
+  background: var(--theme-color-1);
+}
+
+.simplequote p {
+	font-family: var(--quote-font);
+	font-size: 14px;
+	font-style: italic;
+	break-inside: avoid;
+	display: inline-block;
+	width: 100%;
+}
+
+.page .simplequote .attribution:before {
+	content: "— ";
+	font-weight: bold;
+}
+
+.page .simplequote .attribution {
+	display: block;
+	text-align: right;
+	font-style: normal;
+	line-height: .54cm;
+}
+
+/**** END GENERAL FORMATTING *****/
+
+.highlighted {
+	font-family: var(--name-font);
+	font-weight: bold;
+	color: var(--text-highlight-color);
+}
+
+/***** SYMBOLS *****/
+.one-half:after {
+	content: "½";
+}
+
+.one-third:after {
+  content: "⅓";
+}
+
+.one-fourth:after {
+  content: "¼";
+}
+
+.times:before {
+	content: "× ";
+}
+
+.double:before {
+	content: "×2";
+}
+
+.triple:before {
+	content: "×3";
+}
+
+.quadruple:before {
+	content: "×4";
+}
+
+.product:after {
+	content: "⋅";
+}
+
+.divide:after {
+	content: "÷";
+}
+
+.em:after {
+	content: "—";
+}
+
+.en:after {
+	content: "–";
+}
+
+.bar:after {
+  content: "│"
+}
+
+.interrupt:before {
+	content: "— ";
+}
+
+.interrupt:after {
+	content: " —";
+}
+
+.arrow:after {
+	content: "→";
+}
+
+.uparrow:after {
+  content: "↑";
+}
+
+.rightarrow:after {
+	content: "→";
+}
+
+.downarrow:after {
+  content: "↓";
+}
+
+.leftarrow:after {
+  content: "←"
+}
+
+.uparrow-right:after {
+  content: "↗";
+}
+
+.uparrow-left:after {
+  content: "↖";
+}
+
+.downarrow-right:after {
+  content: "↘";
+}
+
+.downarrow-left:after {
+  content: "↙";
+}
+
+.verticaldots:after {
+	content: "⋮";
+}
+
+.horizontaldots:after {
+  content: "⋯";
+}
+
+.diagonaldots-right:after {
+  content: "⋰";
+}
+
+.diagonaldots-left:after {
+  content: "⋱";
+}
+
+.ellipses:after {
+	content: "…";
+}
+
+.star:after {
+  content: "★";
+}
+
+.square:after {
+  content: "■";
+}
+
+.circle:after {
+  content: "●";
+}
+
+.opencircle:after {
+  content: "○";
+}
+
+.triangle:after {
+  content: "▲";
+}
+
+.triangle-right:after {
+  content: "▶";
+}
+
+.triangle-down:after {
+  content: "▼";
+}
+
+.triangle-left:after {
+  content: "◀";
+}
+
+/***** END SYMBOLS *****/
+
+.page::after {
+  background-image: none;
+}
+
+.pagenumber-footer {
+  right: 8px;
+  bottom: 12px;
+  position: absolute;
+  font-size: .9em;
+  text-align: center;
+  font-family: var(--footer-font);
+  font-weight: bold;
+  background-color: var(--page-background-color);
+  border-radius: 3px;
+  padding: 0.33em;
+}
+
+.pagenumber-footer.auto::before {
+  content: counter(page-numbers) " | ";
+}
+
+.pagenumber-footer.auto::after {
+  content: "\00a0";
+}
+
+.page h1, .page h2 {
+  color: var(--big-header-color);
+}
+
+.page h3, .page h4 {
+  color: var(--small-header-color);
+}
+
+.page h3 {
+  border-bottom: 2px solid var(--horizontal-line-color);
+}
+
+.block.artist {
+color: var(--artist-attribution-color);
+}
+
+.sp::after {
+  content: "\00a0";
+}
+
+.sp2::after {
+  content: "\00a0\00a0";
+}
+
+.sp3::after {
+  content: "\00a0\00a0\00a0";
+}
+
+.sp4::after {
+  content: "\00a0\00a0\00a0\00a0";
+}
+
+.sp5::after {
+  content: "\00a0\00a0\00a0\00a0\00a0";
+}
+
+.sp10::after {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+}
+
+.sp20::after {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+}
+
+.sp45::after {
+  content: "\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0\00a0";
+}
+
+
+.page code {
+  color: black;
+  background-color: var(--code-background-color);
+  font-family: var(--code-font) !important;
+  font-weight: bold;
+}
+
+.page pre code {
+  color: black;
+  background-color: var(--code-background-color);
+  font-family: var(--code-font) !important;
+  font-weight: bold;
+  border-image: none;
+  border-radius: 4px;
+  border: none;
+}
+
+.codeblock {
+  color: black;
+  background-color: var(--code-background-color) !important;
+  font-family: var(--code-font) !important;
+  font-weight: bold;
+}
+
+.page .altcode {
+  background-color: var(--theme-color-2);
+	border: none;
+  padding: 0px 4px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 0.9em;
+	font-family: var(--code-font);
+}
+
+.indent-list li::marker {
+  content: ''
+}
+
+.indented {
+  margin-left: 15px;
+  margin-top: 5px !important;
+  padding-right: 10px !important;
+}
+
+.passive {
+  opacity: 0.55;
+}
+
+.page * {
+  font-family: var(--general-font);
+}
+
+.page h1, .page h2, .page h3, .page h4, .page h6 {
+  font-family: var(--general-font);
+}
+
+.page p {
+  line-height: 20px; /* Normal line height for HB is 16px */
+}
+
+.page ul + p {
+  text-indent: 0px;
+}
+
+.page ol + p {
+  text-indent: 0px;
+}
+
+.page .focused {
+	background-color: var(--theme-color-2);
+	border: none;
+	padding: 8px;
+	font-family: var(--info-font);
+}
+
+.page .aside {
+	background-color: var(--theme-color-2);
+	border: none;
+  padding: 2px 8px;
+  margin-top: 6px;
+  margin-bottom: 6px;
+	font-family: var(--info-font);
+}
+
+.page li {
+  margin-top: 2px;
+}
+
+.spell-rank::after {
+  color: transparent;
+  text-shadow: 0 0 0 var(--spell-rank-color);
+}
+
+.spell-rank0::after { content: var(--spell-cantrip-symbol); }
+.spell-rank1::after { content: var(--spell-leveled-symbol); }
+.spell-rank2::after { content: var(--spell-leveled-symbol) var(--spell-leveled-symbol); }
+.spell-rank3::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol);
+}
+.spell-rank4::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol); 
+}
+.spell-rank5::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol);
+}
+.spell-rank6::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol);
+ }
+.spell-rank7::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol); 
+}
+.spell-rank8::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol) 
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol) 
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol);
+}
+.spell-rank9::after {
+  content:  var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol)
+            var(--spell-leveled-symbol) var(--spell-leveled-symbol) var(--spell-leveled-symbol);
+}
+
+/* --- */
+.plaintable td:nth-child(even) {
+  background-color: var(--page-background-color)
+}
+
+.plaintable td:nth-child(odd) {
+  background-color: var(--page-background-color)
+}
+
+.page .classTable.frame, .page .classTable.decoration::before {
+  background-image: none;
+  border: none;
+  border-image: none;
+}
+
+.page .classTable.frame {
+  background-color: var(--theme-color-3);
+  padding: 8px;
+}
+
+.page .classTable table tr td {
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+/* CREDIT */
+.page .prunus-credit { columns: 2; }
+.page .prunus-credit p { text-align: center; font-size: 16px; }
+.page .prunus-credit a { text-decoration: none; font-size: 14px; color: black; }
+.prunus-icon { content: url(https://imgur.com/tRWD292.png); }
+
+.page .quote .attribution::before {
+  content: "——";
+}
+
+.h1, .H1 {
+  color: var(--big-header-color);
+  margin-bottom: .18cm;
+  font-size: 0.89cm;
+  line-height: 1em;
+  -webkit-column-span: all;
+  column-span: all;
+  font-weight: bold;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.page .h1+*, .page .H1+* {
+  margin-top: 0;
+}
+
+.h2, .H2 {
+  color: var(--big-header-color);
+  font-size: 0.75cm;
+  line-height: 0.988em;
+  font-weight: bold;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+}
+
+.h3, .H3 {
+  border-bottom: 2px solid var(--horizontal-line-color);
+  width: 100%;
+  color: var(--small-header-color);
+  font-size: 0.575cm;
+  line-height: 0.995em;
+  font-weight: bold;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 5px;
+}
+
+.page *+.h3, .page *+.H3 {
+  margin-top: 0.155cm;
+}
+
+.page .h3+*, .page .H3+* {
+  margin-top: 0.17cm;
+}
+
+.h4, .H4 {
+  color: var(--small-header-color);
+  font-size: 0.458cm;
+  line-height: 0.971em;
+  font-weight: bold;
+  --TOC: exclude;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+}
+
+.page *+.h4, .page *+.H4 {
+  margin-top: 0.235cm;
+}
+
+.h5, .H5 {
+  font-size: .423cm;
+  line-height: .951em;
+  margin-top: .09cm;
+  font-weight: bold;
+  font-family: "ScalySansSmallCapsRemake";
+  --TOC: exclude;
+  margin-block-start: 1.67em;
+  margin-block-end: 1.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+}
+
+.h6, .H6 {
+  font-weight: bold;
+  line-height: 1.2em;
+  --TOC: exclude;
+  margin-block-start: 2.33em;
+  margin-block-end: 2.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  margin: 0;
+  padding: 0;
+}
+
+.gap-quarter, .gap-half, .gap-full, .gap-double {
+  margin-bottom: -1em;
+}
+
+.gap-negative + * {
+  margin-top: -1.25em;
+}
+
+.gap-zero + * {
+  margin-top: -1em;
+}
+
+.gap-eighth + * {
+  margin-top: -0.75em;
+}
+
+.gap-quarter + * {
+  margin-top: -0.75em;
+}
+
+.gap-half + * {
+  margin-top: -0.5em;
+}
+
+.gap-full + * {
+  margin-top: 0em;
+}
+
+.gap-double + * {
+  margin-top: 1em;
+}
+
+.decotable table {
+  line-height: 2em;
+  letter-spacing:.3px;
+  border: 2px solid var(--small-header-color);
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.decotable table th {
+  line-height: 2em;
+  letter-spacing: .08em;
+  font-family: 'ScalySansSmallCapsRemake';
+}
+
+.decotable table tbody tr {
+  line-height: 2em;
+  letter-spacing:.3px
+}
+
+.decotable table tbody tr td {
+  padding: 0em .3em 0em .3em;
+	margin: 0em;
+	vertical-align: middle;
+}
+
+.listmarker-bar li {
+  list-style-type: "❚ " !important;
+}
+
+.listmarker-diamond li {
+  list-style-type: "◆ " !important;
+}
+
+.listmarker-triangle li {
+  list-style-type: "▶ " !important;
+}
+
+.listmarker-arrowhead li {
+  list-style-type: "➤ " !important;
+}
+
+.listmarker-arrow li {
+  list-style-type: "→ " !important;
+}
+
+.tablespace-5px table {
+  border-collapse: separate;
+  border-spacing: 5px 0px;
+}
+
+.tablespace-10px table {
+  border-collapse: separate;
+  border-spacing: 10px 0px;
+}
+
+.tablespace-15px table {
+  border-collapse: separate;
+  border-spacing: 15px 0px;
+}
+
+.tablespace-20px table {
+  border-collapse: separate;
+  border-spacing: 20px 0px;
+}
+.tablespace-1 table {
+  border-collapse: separate;
+  border-spacing: 1em 0px;
+}
+.tablespace-2 table {
+  border-collapse: separate;
+  border-spacing: 2em 0px;
+}
+.tablespace-3 table {
+  border-collapse: separate;
+  border-spacing: 3em 0px;
+}
+.tablespace-4 table {
+  border-collapse: separate;
+  border-spacing: 4em 0px;
+}
+.tablespace-5 table {
+  border-collapse: separate;
+  border-spacing: 5em 0px;
+}
+.tablespace-6 table {
+  border-collapse: separate;
+  border-spacing: 6em 0px;
+}
+.tablespace-7 table {
+  border-collapse: separate;
+  border-spacing: 7em 0px;
+}
+.tablespace-8 table {
+  border-collapse: separate;
+  border-spacing: 8em 0px;
+}
+.tablespace-9 table {
+  border-collapse: separate;
+  border-spacing: 9em 0px;
+}
+.tablespace-10 table {
+  border-collapse: separate;
+  border-spacing: 10em 0px;
+}
+.tablespace-11 table {
+  border-collapse: separate;
+  border-spacing: 11em 0px;
+}
+.tablespace-12 table {
+  border-collapse: separate;
+  border-spacing: 12em 0px;
+}
+.tablespace-13 table {
+  border-collapse: separate;
+  border-spacing: 13em 0px;
+}
+.tablespace-14 table {
+  border-collapse: separate;
+  border-spacing: 14em 0px;
+}
+.tablespace-15 table {
+  border-collapse: separate;
+  border-spacing: 15em 0px;
+}
+
+/*------------------------------ PAGE MODIFIERS ------------------------------*/
+.page:has(.__PAGE__.listmarker-bar) * {
+  list-style-type: "❚ " !important;
+}
+
+.page:has(.__PAGE__.listmarker-diamond) * {
+  list-style-type: "◆ " !important;
+}
+
+.page:has(.__PAGE__.listmarker-triangle) * {
+  list-style-type: "▶ " !important;
+}
+
+.page:has(.__PAGE__.listmarker-arrowhead) * {
+  list-style-type: "➤ " !important;
+}
+
+.page:has(.__PAGE__.listmarker-arrow) * {
+  list-style-type: "→ " !important;
+}
+
+.page:has(.__PAGE__.decotable) table {
+  line-height: 2em;
+  letter-spacing:.3px;
+  border: 2px solid var(--small-header-color);
+  border-collapse: separate;
+  border-spacing: 3px;
+}
+
+.page:has(.__PAGE__.decotable) table th {
+  line-height: 2em;
+  letter-spacing: .08em;
+  font-family: 'ScalySansSmallCapsRemake';
+}
+
+.page:has(.__PAGE__.decotable) table tbody tr {
+  line-height: 2em;
+  letter-spacing:.3px
+}
+
+.page:has(.__PAGE__.decotable) table toby tr td {
+  padding: 0em .3em 0em .3em;
+	margin: 0em;
+	vertical-align: middle;
+}
+
+.page:has(.__PAGE__.plaintable) td:nth-child(even) {
+  background-color: var(--page-background-color)
+}
+
+.page:has(.__PAGE__.plaintable) td:nth-child(odd) {
+  background-color: var(--page-background-color)
+}
+
+.page:has(.__PAGE__.altcode) code {
+  background-color: var(--theme-color-2);
+	border: none;
+  padding: 0px 4px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-weight: bold;
+  font-size: 0.9em;
+	font-family: var(--code-font);
+}
+
+.page:has(.__PAGE__.altcode) pre code {
+  color: black;
+  background-color: var(--code-background-color);
+  font-family: var(--code-font) !important;
+  font-weight: bold;
+  border-image: none;
+  border-radius: 4px;
+  border: none;
+}
+
+.page:has(.__PAGE__.altcode) .codeblock {
+  color: black;
+  background-color: var(--code-background-color) !important;
+  font-family: var(--code-font) !important;
+  font-weight: bold;
+}
+
+.columnWrapper:has(.__PAGE__.wide) {
+  columns: 1;
+}
+
+.page:has(.__PAGE__.bg-white) {
+  background-color: white;
+}
+
+.page:has(.__PAGE__.monochrome) {
+  color: transparent;
+  text-shadow: 0 0 0 black;
+  -webkit-filter: grayscale(100%);
+  -moz-filter: grayscale(100%);
+  -ms-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.page:has(.__PAGE__.monochrome) li::marker {
+  color: black;
+}
+
+/*****
+ * PAGE PORTRAIT OR LANDSCAPE MODES
+ * Allow for horizontal or vertical orientation of
+ * print sizes A0-5, letter, legal, and tabloid.
+ * Default size is letter.
+******/
+.page:has(.__PAGE__.landscape-A0){width:1188mm;height:841mm;}
+.page:has(.__PAGE__.landscape-A1){width:841mm;height:594mm;}
+.page:has(.__PAGE__.landscape-A2){width:594mm;height:420mm;}
+.page:has(.__PAGE__.landscape-A3){width:420mm;height:297mm;}
+.page:has(.__PAGE__.landscape-A4){width:297mm;height:210mm;}
+.page:has(.__PAGE__.landscape-A5){width:210mm;height:148mm;}
+.page:has(.__PAGE__.landscape-letter){width:11in;height:8.5in;}
+.page:has(.__PAGE__.landscape-legal){width:14in;height:8.5in;}
+.page:has(.__PAGE__.landscape-tabloid){width:17in;height:11in;}
+.page:has(.__PAGE__.landscape){width:11in;height:8.5in;}
+.page:has(.__PAGE__.portrait-A0){width:841mm;height:1188mm;}
+.page:has(.__PAGE__.portrait-A1){width:594mm;height:841mm;}
+.page:has(.__PAGE__.portrait-A2){width:420mm;height:594mm;}
+.page:has(.__PAGE__.portrait-A3){width:297mm;height:420mm;}
+.page:has(.__PAGE__.portrait-A4){width:210mm;height:297mm;}
+.page:has(.__PAGE__.portrait-A5){width:148mm;height:210mm;}
+.page:has(.__PAGE__.portrait-letter){width:8.5in;height:11in;}
+.page:has(.__PAGE__.portrait-legal){width:8.5in;height:14in;}
+.page:has(.__PAGE__.portrait-tabloid){width:11in;height:17in;}
+.page:has(.__PAGE__.portrait){width:8.5in;height:11in;}
+
+.page:has(.__PAGE__.simplequote) .quote p {
+	font-size: 14px;
+	font-style: italic;
+	break-inside: avoid;
+	display: inline-block;
+	width: 100%;
+  font-family: var(--quote-font);
+}
+
+.page:has(.__PAGE__.simplequote) .quote p:first-child::first-line {
+  all: inherit;
+}
+
+.page:has(.__PAGE__.simplequote) .quote .attribution:before {
+	content: "— ";
+	font-weight: bold;
+}
+
+.page:has(.__PAGE__.simplequote) .quote .attribution {
+	display: block;
+	text-align: right;
+	font-style: normal;
+	line-height: .54cm;
+  margin-top: 10px;
+}
