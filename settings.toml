@@ -1,0 +1,8 @@
+[settings]
+title = "Prunus Minimal"
+desc = "The customizable CSS I've developed for styling my content, and an explanation of how to use its features. The style is overall more minimal and, in someone else's words, \"incredibly clean\"."
+thumbnail = "https://imgur.com/eavXWfl.png"
+tags = [ "style", "format", "prunus", "customizable", "meta:Theme"]
+lang = "en"
+theme = "V3: 5e PHB"
+renderer = "V3"
