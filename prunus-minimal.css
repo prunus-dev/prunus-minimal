@@ -67,8 +67,11 @@
   /* Theme color; used for {{aside}} and {{focused}} blocks */
   --theme-color-2: #E4EDF1;
   
-  /* Theme color; not currently used, but available for use */
+  /* Theme color; fainter than color 1 and 2, used for class table frame */
   --theme-color-3: #F5F8FA;
+  
+  /* Theme color; for very faint accents, such as {{listmarker-accent}} */
+  --theme-color-4: #f8fafc;
 }
 /***** END VARIABLES *****/
 
@@ -77,132 +80,132 @@
   margin-bottom: 0;
 }
 
-.centered {
+.centered, .centered * {
   text-align: center;
 }
 
-.left-text {
+.left-text, .left-text * {
   text-align: left;
 }
 
-.right-text {
+.right-text, .right-text * {
   text-align: right;
 }
 
-.fullwidth {
+.fullwidth, .fullwidth * {
   width: 100%;
 }
 
-.centerfull {
+.centerfull, .centerfull * {
   text-align: center;
   width: 100%;
 }
 
-.leftfull {
+.leftfull, .leftfull * {
   text-align: left;
   width: 100%;
 }
 
-.rightfull {
+.rightfull, .rightfull * {
   text-align: right;
   width: 100%;
 }
 
-.underlined {
+.underlined, .underlined * {
   text-decoration: underline !important;
 }
 
-.bold {
+.bold, .bold * {
   font-weight: bold !important;
 }
 
-.italics {
+.italics, .italics * {
   font-style: italic !important;
 }
 
-.oblique {
+.oblique, .oblique * {
   font-style: oblique !important;
 }
 
-.normal {
+.normal, .normal * {
   font-style: normal !important;
   font-weight: normal !important;
   text-decoration: none !important;
 }
 
-.f-mono {
+.f-mono, .f-mono * {
   font-family: monospace !important;
 }
 
-.f-opensans {
+.f-opensans, .f-opensans * {
   font-family: "OpenSans" !important;
 }
 
-.f-codebold {
+.f-codebold, .f-codebold * {
   font-family: "CodeBold" !important;
 }
 
-.f-codelight {
+.f-codelight, .f-codelight * {
   font-family: "CodeLight" !important
 }
 
-.f-scalysans {
+.f-scalysans, .f-scalysans * {
   font-family: "ScalySansRemake" !important;
 }
 
-.f-bookinsanity {
+.f-bookinsanity, .f-bookinsanity * {
   font-family: "BookInsanityRemake" !important;
 }
 
-.f-mreaves {
+.f-mreaves, .f-mreaves * {
   font-family: "MrEavesRemake" !important;
 }
 
-.f-pagella {
+.f-pagella, .f-pagella * {
   font-family: "Pagella" !important;
 }
 
-.f-solbera {
+.f-solbera, .f-solbera * {
   font-family: "SolberaImitationRemake" !important;
 }
 
-.f-scalysanssmall {
+.f-scalysanssmall, .f-scalysanssmall * {
   font-family: "ScalySansSmallCapsRemake" !important;
 }
 
-.f-walterturncoat {
+.f-walterturncoat, .f-walterturncoat * {
   font-family: "WalterTurncoat" !important;
 }
 
-.f-lato {
+.f-lato, .f-lato * {
   font-family: "Lato" !important;
 }
 
-.f-courier {
+.f-courier, .f-courier * {
   font-family: "Courier" !important;
 }
 
-.f-nodesta {
+.f-nodesta, .f-nodesta * {
   font-family: "NodestoCapsCondensed" !important;
 }
 
-.f-overpass {
+.f-overpass, .f-overpass * {
   font-family: "Overpass" !important;
 }
 
-.f-davek {
+.f-davek, .f-davek * {
   font-family: "Davek" !important;
 }
 
-.f-iokharic {
+.f-iokharic, .f-iokharic * {
   font-family: "Iokharic" !important;
 }
 
-.f-rellanic {
+.f-rellanic, .f-rellanic * {
   font-family: "Rellanic" !important;
 }
 
-.f-timesnewroman {
+.f-timesnewroman, .f-timesnewroman * {
   font-family: "Times New Roman" !important;
 }
 
@@ -232,7 +235,7 @@
 
 .page:has(.background-white) { background: white; }
 
-.page:has(.monochrome-page), .monochrome {
+.page:has(.monochrome-page), .monochrome, .monochrome * {
   color: transparent;
   text-shadow: 0 0 0 black;
   -webkit-filter: grayscale(100%);
@@ -437,7 +440,7 @@
   background-image: none;
 }
 
-.pagenumber-footer {
+.page-footer {
   right: 8px;
   bottom: 12px;
   position: absolute;
@@ -447,14 +450,14 @@
   font-weight: bold;
   background-color: var(--page-background-color);
   border-radius: 3px;
-  padding: 0.33em;
+  padding: 0.4em;
 }
 
-.pagenumber-footer.auto::before {
-  content: counter(page-numbers) " | ";
+.page-footer.numbered::before {
+  content: counter(page-numbers) "│";
 }
 
-.pagenumber-footer.auto::after {
+.page-footer.numbered::after {
   content: "\00a0";
 }
 
@@ -552,7 +555,7 @@ color: var(--artist-attribution-color);
   padding-right: 10px !important;
 }
 
-.passive {
+.passive, .passive * {
   opacity: 0.55;
 }
 
@@ -637,11 +640,19 @@ color: var(--artist-attribution-color);
 
 /* --- */
 .plaintable td:nth-child(even) {
-  background-color: var(--page-background-color)
+  background-color: transparent ;
+}
+
+.plaintable table tbody tr:nth-child(even) {
+  background-color: transparent;
 }
 
 .plaintable td:nth-child(odd) {
-  background-color: var(--page-background-color)
+  background-color: transparent;
+}
+
+.plaintable table tbody tr:nth-child(odd) {
+  background-color: transparent;
 }
 
 .page .classTable.frame, .page .classTable.decoration::before {
@@ -856,84 +867,17 @@ color: var(--artist-attribution-color);
   list-style-type: "→ " !important;
 }
 
-.tablespace-5px table {
-  border-collapse: separate;
-  border-spacing: 5px 0px;
+.listmarker-accent li {
+  border-left: 2px solid var(--theme-color-1);
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-bottom: 0.5em;
+  background-color: var(--theme-color-4);
+  list-style-type: "" !important;
 }
 
-.tablespace-10px table {
-  border-collapse: separate;
-  border-spacing: 10px 0px;
-}
-
-.tablespace-15px table {
-  border-collapse: separate;
-  border-spacing: 15px 0px;
-}
-
-.tablespace-20px table {
-  border-collapse: separate;
-  border-spacing: 20px 0px;
-}
-.tablespace-1 table {
-  border-collapse: separate;
-  border-spacing: 1em 0px;
-}
-.tablespace-2 table {
-  border-collapse: separate;
-  border-spacing: 2em 0px;
-}
-.tablespace-3 table {
-  border-collapse: separate;
-  border-spacing: 3em 0px;
-}
-.tablespace-4 table {
-  border-collapse: separate;
-  border-spacing: 4em 0px;
-}
-.tablespace-5 table {
-  border-collapse: separate;
-  border-spacing: 5em 0px;
-}
-.tablespace-6 table {
-  border-collapse: separate;
-  border-spacing: 6em 0px;
-}
-.tablespace-7 table {
-  border-collapse: separate;
-  border-spacing: 7em 0px;
-}
-.tablespace-8 table {
-  border-collapse: separate;
-  border-spacing: 8em 0px;
-}
-.tablespace-9 table {
-  border-collapse: separate;
-  border-spacing: 9em 0px;
-}
-.tablespace-10 table {
-  border-collapse: separate;
-  border-spacing: 10em 0px;
-}
-.tablespace-11 table {
-  border-collapse: separate;
-  border-spacing: 11em 0px;
-}
-.tablespace-12 table {
-  border-collapse: separate;
-  border-spacing: 12em 0px;
-}
-.tablespace-13 table {
-  border-collapse: separate;
-  border-spacing: 13em 0px;
-}
-.tablespace-14 table {
-  border-collapse: separate;
-  border-spacing: 14em 0px;
-}
-.tablespace-15 table {
-  border-collapse: separate;
-  border-spacing: 15em 0px;
+.listmarker-accent ul {
+  padding-left: 0;
 }
 
 /*------------------------------ PAGE MODIFIERS ------------------------------*/
@@ -955,6 +899,23 @@ color: var(--artist-attribution-color);
 
 .page:has(.__PAGE__.listmarker-arrow) * {
   list-style-type: "→ " !important;
+}
+
+.page:has(.__PAGE__.listmarker-accent) li {
+  border-left: 2px solid var(--theme-color-1);
+  padding-left: 6px;
+  padding-right: 6px;
+  margin-bottom: 0.5em;
+  background-color: var(--theme-color-4);
+  list-style-type: "" !important;
+}
+
+.page:has(.__PAGE__.listmarker-accent) ul {
+  padding-left: 0;
+}
+
+.page:has(.__PAGE__.indent-list) li::marker {
+  content: ''
 }
 
 .page:has(.__PAGE__.decotable) table {
@@ -983,11 +944,19 @@ color: var(--artist-attribution-color);
 }
 
 .page:has(.__PAGE__.plaintable) td:nth-child(even) {
-  background-color: var(--page-background-color)
+  background-color: transparent;
+}
+
+.page:has(.__PAGE__.plaintable) table tbody tr:nth-child(even) {
+  background-color: transparent;
 }
 
 .page:has(.__PAGE__.plaintable) td:nth-child(odd) {
-  background-color: var(--page-background-color)
+  background-color: transparent;
+}
+
+.page:has(.__PAGE__.plaintable) table tbody tr:nth-child(odd) {
+  background-color: transparent;
 }
 
 .page:has(.__PAGE__.altcode) code {
@@ -1090,4 +1059,405 @@ color: var(--artist-attribution-color);
 	font-style: normal;
 	line-height: .54cm;
   margin-top: 10px;
+}
+
+/*-------------------------------- TABLE GAPS --------------------------------*/
+.tgap-row-1 table {
+  border-collapse: separate;
+  border-spacing: 0em 1em;
+}
+
+.tgap-row-2 table {
+  border-collapse: separate;
+  border-spacing: 0em 2em;
+}
+
+.tgap-row-3 table {
+  border-collapse: separate;
+  border-spacing: 0em 3em;
+}
+
+.tgap-row-4 table {
+  border-collapse: separate;
+  border-spacing: 0em 4em;
+}
+
+.tgap-row-5 table {
+  border-collapse: separate;
+  border-spacing: 0em 5em;
+}
+
+.tgap-row-6 table {
+  border-collapse: separate;
+  border-spacing: 0em 6em;
+}
+
+.tgap-row-7 table {
+  border-collapse: separate;
+  border-spacing: 0em 7em;
+}
+
+.tgap-row-8 table {
+  border-collapse: separate;
+  border-spacing: 0em 8em;
+}
+
+.tgap-row-9 table {
+  border-collapse: separate;
+  border-spacing: 0em 9em;
+}
+
+.tgap-row-10 table {
+  border-collapse: separate;
+  border-spacing: 0em 10em;
+}
+
+.tgap-row-1px table {
+  border-collapse: separate;
+  border-spacing: 0px 1px;
+}
+
+.tgap-row-2px table {
+  border-collapse: separate;
+  border-spacing: 0px 2px;
+}
+
+.tgap-row-3px table {
+  border-collapse: separate;
+  border-spacing: 0px 3px;
+}
+
+.tgap-row-4px table {
+  border-collapse: separate;
+  border-spacing: 0px 4px;
+}
+
+.tgap-row-5px table {
+  border-collapse: separate;
+  border-spacing: 0px 5px;
+}
+
+.tgap-row-6px table {
+  border-collapse: separate;
+  border-spacing: 0px 6px;
+}
+
+.tgap-row-7px table {
+  border-collapse: separate;
+  border-spacing: 0px 7px;
+}
+
+.tgap-row-8px table {
+  border-collapse: separate;
+  border-spacing: 0px 8px;
+}
+
+.tgap-row-9px table {
+  border-collapse: separate;
+  border-spacing: 0px 9px;
+}
+
+.tgap-row-10px table {
+  border-collapse: separate;
+  border-spacing: 0px 10px;
+}
+
+.tgap-row-11px table {
+  border-collapse: separate;
+  border-spacing: 0px 11px;
+}
+
+.tgap-row-12px table {
+  border-collapse: separate;
+  border-spacing: 0px 12px;
+}
+
+.tgap-row-13px table {
+  border-collapse: separate;
+  border-spacing: 0px 13px;
+}
+
+.tgap-row-14px table {
+  border-collapse: separate;
+  border-spacing: 0px 14px;
+}
+
+.tgap-row-15px table {
+  border-collapse: separate;
+  border-spacing: 0px 15px;
+}
+
+.tgap-row-16px table {
+  border-collapse: separate;
+  border-spacing: 0px 16px;
+}
+
+.tgap-row-17px table {
+  border-collapse: separate;
+  border-spacing: 0px 17px;
+}
+
+.tgap-row-18px table {
+  border-collapse: separate;
+  border-spacing: 0px 18px;
+}
+
+.tgap-row-19px table {
+  border-collapse: separate;
+  border-spacing: 0px 19px;
+}
+
+.tgap-row-20px table {
+  border-collapse: separate;
+  border-spacing: 0px 20px;
+}
+
+.tgap-row-21px table {
+  border-collapse: separate;
+  border-spacing: 0px 21px;
+}
+
+.tgap-row-22px table {
+  border-collapse: separate;
+  border-spacing: 0px 22px;
+}
+
+.tgap-row-23px table {
+  border-collapse: separate;
+  border-spacing: 0px 23px;
+}
+
+.tgap-row-24px table {
+  border-collapse: separate;
+  border-spacing: 0px 24px;
+}
+
+.tgap-row-25px table {
+  border-collapse: separate;
+  border-spacing: 0px 25px;
+}
+
+.tgap-row-26px table {
+  border-collapse: separate;
+  border-spacing: 0px 26px;
+}
+
+.tgap-row-27px table {
+  border-collapse: separate;
+  border-spacing: 0px 27px;
+}
+
+.tgap-row-28px table {
+  border-collapse: separate;
+  border-spacing: 0px 28px;
+}
+
+.tgap-row-29px table {
+  border-collapse: separate;
+  border-spacing: 0px 29px;
+}
+
+.tgap-row-30px table {
+  border-collapse: separate;
+  border-spacing: 0px 30px;
+}
+
+.tgap-col-1 table {
+  border-collapse: separate;
+  border-spacing: 1em 0em;
+}
+
+.tgap-col-2 table {
+  border-collapse: separate;
+  border-spacing: 2em 0em;
+}
+
+.tgap-col-3 table {
+  border-collapse: separate;
+  border-spacing: 3em 0em;
+}
+
+.tgap-col-4 table {
+  border-collapse: separate;
+  border-spacing: 4em 0em;
+}
+
+.tgap-col-5 table {
+  border-collapse: separate;
+  border-spacing: 5em 0em;
+}
+
+.tgap-col-6 table {
+  border-collapse: separate;
+  border-spacing: 6em 0em;
+}
+
+.tgap-col-7 table {
+  border-collapse: separate;
+  border-spacing: 7em 0em;
+}
+
+.tgap-col-8 table {
+  border-collapse: separate;
+  border-spacing: 8em 0em;
+}
+
+.tgap-col-9 table {
+  border-collapse: separate;
+  border-spacing: 9em 0em;
+}
+
+.tgap-col-10 table {
+  border-collapse: separate;
+  border-spacing: 10em 0em;
+}
+
+.tgap-col-1px table {
+  border-collapse: separate;
+  border-spacing: 1px 0px;
+}
+
+.tgap-col-2px table {
+  border-collapse: separate;
+  border-spacing: 2px 0px;
+}
+
+.tgap-col-3px table {
+  border-collapse: separate;
+  border-spacing: 3px 0px;
+}
+
+.tgap-col-4px table {
+  border-collapse: separate;
+  border-spacing: 4px 0px;
+}
+
+.tgap-col-5px table {
+  border-collapse: separate;
+  border-spacing: 5px 0px;
+}
+
+.tgap-col-6px table {
+  border-collapse: separate;
+  border-spacing: 6px 0px;
+}
+
+.tgap-col-7px table {
+  border-collapse: separate;
+  border-spacing: 7px 0px;
+}
+
+.tgap-col-8px table {
+  border-collapse: separate;
+  border-spacing: 8px 0px;
+}
+
+.tgap-col-9px table {
+  border-collapse: separate;
+  border-spacing: 9px 0px;
+}
+
+.tgap-col-10px table {
+  border-collapse: separate;
+  border-spacing: 10px 0px;
+}
+
+.tgap-col-11px table {
+  border-collapse: separate;
+  border-spacing: 11px 0px;
+}
+
+.tgap-col-12px table {
+  border-collapse: separate;
+  border-spacing: 12px 0px;
+}
+
+.tgap-col-13px table {
+  border-collapse: separate;
+  border-spacing: 13px 0px;
+}
+
+.tgap-col-14px table {
+  border-collapse: separate;
+  border-spacing: 14px 0px;
+}
+
+.tgap-col-15px table {
+  border-collapse: separate;
+  border-spacing: 15px 0px;
+}
+
+.tgap-col-16px table {
+  border-collapse: separate;
+  border-spacing: 16px 0px;
+}
+
+.tgap-col-17px table {
+  border-collapse: separate;
+  border-spacing: 17px 0px;
+}
+
+.tgap-col-18px table {
+  border-collapse: separate;
+  border-spacing: 18px 0px;
+}
+
+.tgap-col-19px table {
+  border-collapse: separate;
+  border-spacing: 19px 0px;
+}
+
+.tgap-col-20px table {
+  border-collapse: separate;
+  border-spacing: 20px 0px;
+}
+
+.tgap-col-21px table {
+  border-collapse: separate;
+  border-spacing: 21px 0px;
+}
+
+.tgap-col-22px table {
+  border-collapse: separate;
+  border-spacing: 22px 0px;
+}
+
+.tgap-col-23px table {
+  border-collapse: separate;
+  border-spacing: 23px 0px;
+}
+
+.tgap-col-24px table {
+  border-collapse: separate;
+  border-spacing: 24px 0px;
+}
+
+.tgap-col-25px table {
+  border-collapse: separate;
+  border-spacing: 25px 0px;
+}
+
+.tgap-col-26px table {
+  border-collapse: separate;
+  border-spacing: 26px 0px;
+}
+
+.tgap-col-27px table {
+  border-collapse: separate;
+  border-spacing: 27px 0px;
+}
+
+.tgap-col-28px table {
+  border-collapse: separate;
+  border-spacing: 28px 0px;
+}
+
+.tgap-col-29px table {
+  border-collapse: separate;
+  border-spacing: 29px 0px;
+}
+
+.tgap-col-30px table {
+  border-collapse: separate;
+  border-spacing: 30px 0px;
 }
